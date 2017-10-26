@@ -1,0 +1,24 @@
+<form #formRef="ngForm" class="login-form" (ngSubmit)="onSubmit()" >
+  <div class="form-group">
+    <input type="text" name="username" 
+    class="form-control"
+    #usernameRef="ngModel" 
+    [(ngModel)]="username"
+    placeholder="输入用户名"
+    required
+    minlength="3">
+    <span *ngIf="usernameRef.errors">{{ usernameRef.errors | json }}</span>
+  </div>
+  <div class="form-group">
+    <input type="password" name="password" 
+      class="form-control"
+      #passwordRef="ngModel"
+      [(ngModel)]="password"
+      placeholder="输入密码"
+      required>
+      <span *ngIf="passwordRef.errors">{{ passwordRef.errors | json }}</span>
+  </div>
+  <div class="form-group">
+    <button class="btn btn-primary center-block login-btn pointer">Login</button>
+  </div>
+</form>
