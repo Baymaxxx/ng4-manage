@@ -1,3 +1,6 @@
+import { Router } from '@angular/router';
+import { Auth } from './../../core/model/auth.model';
+import { AuthService } from './../../core/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,11 +11,23 @@ import { Component, OnInit } from '@angular/core';
 export class UserLoginComponent implements OnInit {
   username: string;
   password: string;
-  constructor() { }
+  auth: Auth;
+  constructor(private authService: AuthService,
+    private router: Router) { }
 
   ngOnInit() {
   }
-  onSubmit(): void{
-    console.log(this.username, this.password);
+  onSubmit(): void {
+    this.authService.loginWithCredentials(this.username, this.password)
+      .then(auth => {
+        console.log(auth);
+        let redirectUrl = (auth.redirectUrl === null) ? '/' : auth.redirectUrl;
+        if (!auth.hasError) {
+          this.router.navigate([redirectUrl]);
+          localStorage.removeItem('redirectUrl');
+        } else {
+          this.auth = Object.assign({},auth);
+        }
+      })
   }
 }

@@ -7,7 +7,6 @@
     placeholder="输入用户名"
     required
     minlength="3">
-    <span *ngIf="usernameRef.errors">{{ usernameRef.errors | json }}</span>
   </div>
   <div class="form-group">
     <input type="password" name="password" 
@@ -16,7 +15,7 @@
       [(ngModel)]="password"
       placeholder="输入密码"
       required>
-      <span *ngIf="passwordRef.errors">{{ passwordRef.errors | json }}</span>
+      <span *ngIf="auth?.hasError">{{ auth.errMsg}}</span>
   </div>
   <div class="form-group">
     <button class="btn btn-primary center-block login-btn pointer">Login</button>

@@ -1,3 +1,4 @@
+import { AuthGuard } from './../core/auth.guard';
 import { ForgetPwdComponent } from './forget-pwd/forget-pwd.component';
 import { UserRegisterComponent } from './user-register/user-register.component';
 import { UserInfoComponent } from './user-info/user-info.component';
@@ -7,11 +8,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { UserLoginComponent } from './user-login/user-login.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'userinfo' },
-  { path: 'userinfo', component: UserInfoComponent },
-  { path: 'login', component: UserLoginComponent},
-  { path: 'register', component: UserRegisterComponent},
-  { path: 'forgetpwd', component: ForgetPwdComponent}
+  { path: '', redirectTo: 'userinfo', pathMatch: 'full' },
+  { path: 'userinfo', component: UserInfoComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: UserLoginComponent },
+  { path: 'register', component: UserRegisterComponent },
+  { path: 'forgetpwd', component: ForgetPwdComponent }
 ];
 
 @NgModule({

@@ -1,3 +1,4 @@
+import { UserService } from './user.service';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
@@ -15,6 +16,7 @@ import { UserRoutingModule } from './user.routing';
     SharedModule,
     FormsModule
   ],
-  declarations: [UserLoginComponent, UserRegisterComponent, ForgetPwdComponent, UserInfoComponent]
+  declarations: [UserLoginComponent, UserRegisterComponent, ForgetPwdComponent, UserInfoComponent],
+  providers: [UserService]
 })
 export class UserModule { }

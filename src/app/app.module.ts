@@ -1,3 +1,5 @@
+import { User } from './user/model/user.model';
+import { CoreModule } from './core/core.module';
 import { UserModule } from './user/user.module';
 import { HomeModule } from './home/home.module';
 import { SharedModule } from './shared/shared.module';
@@ -16,7 +18,9 @@ import { HttpModule } from '@angular/http';
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    HttpModule
+    HttpModule,
+    CoreModule,
+    UserModule
   ],
   providers: [],
   bootstrap: [AppComponent]

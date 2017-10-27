@@ -1,3 +1,4 @@
+import { UserLogoutComponent } from './../user/user-logout/user-logout.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule ,ReactiveFormsModule} from '@angular/forms';
@@ -8,11 +9,12 @@ import { FormsModule ,ReactiveFormsModule} from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
   ],
-  declarations: [],
+  declarations: [UserLogoutComponent],
   exports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    UserLogoutComponent
   ]
 })
 export class SharedModule { }
