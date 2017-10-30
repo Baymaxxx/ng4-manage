@@ -1,3 +1,4 @@
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { TodoService } from './todo.service';
 import { Todo } from './todo.model';
 import { Component, OnInit } from '@angular/core';
@@ -10,9 +11,16 @@ import { Component, OnInit } from '@angular/core';
 export class TodoComponent implements OnInit {
   todos: Todo[];
   desc: string;
-  constructor(private todoService: TodoService) {
-    this.todos = [];
-    this.desc = '';
+  constructor(
+    private todoService: TodoService,
+    private router:Router,
+    private route:ActivatedRoute) {
+      this.todos = [];
+      this.desc = '';      
+      this.route.params.forEach((params: Params) => {
+        let filter = params['filter'];
+        this.filterTodos(filter);
+      }) 
   }
 
   ngOnInit() {
@@ -20,7 +28,6 @@ export class TodoComponent implements OnInit {
       console.log('这是你想要执行的代码');
     }
     let fn = () => {
-      this.getTodos();
       return new Promise((resolve, resject) => {
         resolve();
       })
@@ -38,17 +45,15 @@ export class TodoComponent implements OnInit {
         this.desc = '';
       })
   }
-  getTodos(): void {
-    this.todoService.getTodos()
-      .then(todos => {
-        this.todos = todos;
-      })
-  }
-  toggleTodo(todo: Todo): void {
+
+  toggleTodo(todo: Todo): Promise<void> {
+    console.log(todo);
+    
     let i = this.todos.indexOf(todo);
-    this.todoService.toggleTodo(todo)
-      .then(() => {
-        this.todos[i].completed = !this.todos[i].completed
+    return this.todoService.toggleTodo(todo)
+      .then(updateTodo => {
+        this.todos[i] = updateTodo;
+        return null;
       })
   }
   removeTodo(todo: Todo): void {
@@ -57,5 +62,21 @@ export class TodoComponent implements OnInit {
       .then(() => {
         this.todos = [...this.todos.slice(0, i),...this.todos.slice(i+1)]
       })
+  }
+  filterTodos(filter: string) {
+    this.todoService.filterTodos(filter)
+      .then(todos => {
+        this.todos = todos;
+      })
+  }
+  clearCompleted(todos: Todo[]) {
+    let completed_todos = this.todos.filter(item => item.completed === true);
+    let active_todos = this.todos.filter(item => item.completed === false);
+    completed_todos.map(item => {
+      this.todoService.deleteTodoById(item.id)
+        .then(() => {
+          this.todos = active_todos;
+        })      
+    })
   }
 }

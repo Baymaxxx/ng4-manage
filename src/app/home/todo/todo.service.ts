@@ -6,25 +6,10 @@ import { Http } from '@angular/http';
 export class TodoService {
   url = "https://www.easy-mock.com/mock/595af9579adc231f357033a7/niceFish"
   userId: number;
-  constructor(private http: Http) {
-    this.userId = Number(localStorage.getItem('userId'));
-  }
-
-  getTodos(): Promise<Todo[]> {
-    return this.http
-      .get(`${this.url}/todo`)
-      .toPromise()
-      .then(res => {
-        let todos = res.json().todos;
-        console.log(todos)        
-        todos = todos.filter(item => {
-          console.log(item.userId===this.userId);        
-          return item.userId === this.userId;
-        });
-        return todos as Todo[];
-      })
+  constructor(private http: Http) {    
   }
   addTodo(desc: string): Promise<Todo> {
+    this.userId = Number(localStorage.getItem('userId'));    
     let todo = {
       id: UUID.UUID(),
       desc: desc,
@@ -45,7 +30,7 @@ export class TodoService {
     return this.http.put(url, JSON.stringify(updateTodo))
       .toPromise()
       .then(() => {
-        return updateTodo as Todo;
+        return updateTodo;
       })
   }
   // DELETE /todos/:id
@@ -54,5 +39,25 @@ export class TodoService {
     return this.http.delete(url)
       .toPromise()
       .then(() => null)
+  }
+  // GET 
+  filterTodos(filter: string): Promise<Todo[]> {
+    this.userId = Number(localStorage.getItem('userId'));    
+    return this.http.get(`${this.url}/todo`)
+      .toPromise()
+      .then(res => {
+        let todos = res.json().todos;
+        todos = todos.filter(item => {
+          return item.userId === this.userId;
+        });
+        switch (filter) {
+          case 'all':
+            return todos;
+          case 'active':
+            return todos.filter(item => item.completed === false);
+          case 'completed':
+            return todos.filter(item => item.completed === true);
+        }
+      })
   }
 }

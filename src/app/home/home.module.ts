@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeRoutingModule } from './home.routing';
 import { TodoComponent } from './todo/todo.component';
+import { TodoListComponent } from './todo/todo-list/todo-list.component';
 
 @NgModule({
   imports: [
@@ -14,7 +15,7 @@ import { TodoComponent } from './todo/todo.component';
     FormsModule,
     SharedModule,
   ],
-  declarations: [HomeComponent, TodoComponent],
+  declarations: [HomeComponent, TodoComponent, TodoListComponent],
   providers: [TodoService]
 })
 export class HomeModule { }

@@ -1,0 +1,14 @@
+<section class="main" *ngIf="todos?.length > 0">
+  <ul class="todo-list">
+    <li *ngFor="let todo of todos" [class.completed]="todo.completed">
+      <div class="view">
+        <input class="toggle" type="checkbox" 
+        (click)="toggleTodo(todo)" 
+        [checked]="todo.completed">
+        <label (click)="toggleTodo(todo)">{{todo.desc}}</label>
+        <button class="destroy" 
+        (click)="removeTodo(todo); $event.stopPropagation()"></button>
+      </div>
+    </li>
+  </ul>
+</section>  

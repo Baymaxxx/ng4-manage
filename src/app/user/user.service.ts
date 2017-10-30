@@ -9,13 +9,14 @@ export class UserService {
     this.api_url = 'https://www.easy-mock.com/mock/595af9579adc231f357033a7/niceFish/user';
   }
   
-  findUser(username: string): Promise<User> {
+  findUser(userNameOrId: any): Promise<User> {
     return this.http.get(`${this.api_url}`)
       .toPromise()
       .then((res) => {
-        console.log(res.json());
         let users = res.json().users as User[];
-        users = users.filter((item) => item.username === username);
+        users = users.filter(item => {
+          return item.username === userNameOrId||item.id === userNameOrId
+        });        
         return users.length > 0?users[0]:null;
       })
   }

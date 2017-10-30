@@ -4,27 +4,21 @@
     <h1>Todos</h1>
     <input class="new-todo" placeholder="What needs to be done?" autofocus="" [(ngModel)]="desc" (keyup.enter)="addTodo()">
   </header>
-  <section class="main" *ngIf="todos?.length > 0">
-    <input class="toggle-all" type="checkbox">
-    <ul class="todo-list">
-      <li *ngFor="let todo of todos" [class.completed]="todo.completed">
-        <div class="view">
-          <input class="toggle" type="checkbox" (click)="toggleTodo(todo)" [checked]="todo.completed">
-          <label (click)="toggleTodo(todo)">{{todo.desc}}</label>
-          <button class="destroy" (click)="removeTodo(todo); $event.stopPropagation()"></button>
-        </div>
-      </li>
-    </ul>
-  </section>
-  <footer class="footer" *ngIf="todos?.length > 0">
+  <app-todo-list 
+    [todos]="todos" 
+    (onRemoveTodo)="removeTodo($event)"
+    (onToggleTodo)="toggleTodo($event)"></app-todo-list>
+  <footer class="footer">
     <span class="todo-count">
       <strong>{{todos?.length}}</strong> {{todos?.length == 1 ? 'item' : 'items'}} left
     </span>
     <ul class="filters">
-      <li><a href="">All</a></li>
-      <li><a href="">Active</a></li>
-      <li><a href="">Completed</a></li>
+      <li><a [routerLink]="['/home/todo/all']">All</a></li>
+      <li><a [routerLink]="['/home/todo/active']">Active</a></li>
+      <li><a [routerLink]="['/home/todo/completed']">Completed</a></li>
     </ul>
-    <button class="clear-completed">Clear completed</button>
+    <button *ngIf="todos?.length > 0" 
+      class="clear-completed"
+      (click)="clearCompleted(todos)">Clear completed</button>
   </footer>
 </section>
