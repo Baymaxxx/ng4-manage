@@ -1,14 +1,12 @@
-.login-form{
-    margin:150px auto;    
-    width: 300px;
-}
-.login-btn{
-    display: block;
-    width: 100px;
-}
-.ng-valid{
-    border-color: green;
-}
-.ng-invalid{
-    border-color: red;
-}
+.login-form {
+    padding-top: 140px;
+    max-width: 300px;
+  }
+
+  .login-form-forgot {
+    float: right;
+  }
+
+  .login-form-button {
+    width: 100%;
+  }

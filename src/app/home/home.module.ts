@@ -1,6 +1,6 @@
+import { PagesModule } from './pages/pages.module';
 import { SharedModule } from './../shared/shared.module';
 import { TodoService } from './todo/todo.service';
-import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -12,10 +12,10 @@ import { TodoListComponent } from './todo/todo-list/todo-list.component';
   imports: [
     CommonModule,
     HomeRoutingModule,
-    FormsModule,
     SharedModule,
+    PagesModule
   ],
-  declarations: [HomeComponent, TodoComponent, TodoListComponent],
-  providers: [TodoService]
+  declarations: [HomeComponent],
+  exports: [HomeComponent]
 })
 export class HomeModule { }

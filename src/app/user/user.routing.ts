@@ -10,9 +10,9 @@ import { UserLoginComponent } from './user-login/user-login.component';
 const routes: Routes = [
   { path: '', redirectTo: 'userinfo', pathMatch: 'full' },
   { path: 'userinfo', component: UserInfoComponent, canActivate: [AuthGuard] },
-  { path: 'login', component: UserLoginComponent },
   { path: 'register', component: UserRegisterComponent },
-  { path: 'forgetpwd', component: ForgetPwdComponent }
+  { path: 'forgetpwd', component: ForgetPwdComponent },
+  { path: 'login', component: UserLoginComponent }  
 ];
 
 @NgModule({

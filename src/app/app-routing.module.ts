@@ -1,24 +1,36 @@
+import { UserLoginComponent } from './user/user-login/user-login.component';
+import { HomeComponent } from './home/home.component';
+import { LayoutComponent } from './layout/layout.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
+    component: LayoutComponent,
+    //包裹layout内
+    children: [
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: 'dashboard', loadChildren: './home/home.module#HomeModule' },
+     
+      {
+        path: 'todo',
+        loadChildren: './todo/todo.module#TodoModule'
+      },
+    ]
   },
-  {
-    path: 'home',
-    loadChildren: './home/home.module#HomeModule'
-  },
+   //单页不包裹layout
   {
     path: 'user',
     loadChildren: './user/user.module#UserModule'
   },
+  //未匹配
   {
     path: '**',
-    redirectTo: 'home'
-  }
+    redirectTo: '',
+    pathMatch: 'full'
+  },
+ 
 ];
 
 @NgModule({

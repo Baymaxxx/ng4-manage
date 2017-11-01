@@ -7,8 +7,6 @@ import { HomeComponent } from './home.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard], pathMatch:'full' },
-  { path: 'todo', redirectTo: 'todo/all', pathMatch: 'full' },
-  { path: 'todo/:filter', component: TodoComponent, canActivate: [AuthGuard], pathMatch: 'full' },
 ];
 
 @NgModule({

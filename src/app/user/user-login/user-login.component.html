@@ -1,23 +1,36 @@
-<form #formRef="ngForm" class="login-form" (ngSubmit)="onSubmit()" >
-  <div class="form-group">
-    <input type="text" name="username" 
-    class="form-control"
-    #usernameRef="ngModel" 
-    [(ngModel)]="username"
-    placeholder="输入用户名"
-    required
-    minlength="3">
-  </div>
-  <div class="form-group">
-    <input type="password" name="password" 
-      class="form-control"
-      #passwordRef="ngModel"
-      [(ngModel)]="password"
-      placeholder="输入密码"
-      required>
-      <span *ngIf="auth?.hasError">{{ auth.errMsg}}</span>
-  </div>
-  <div class="form-group">
-    <button class="btn btn-primary center-block login-btn pointer">Login</button>
-  </div>
-</form>
+<div class="all-page">
+  <form nz-form [formGroup]="validateForm" class="login-form center-block" (ngSubmit)="_submitForm()">
+    <div nz-form-item>
+      <div nz-form-control [nzValidateStatus]="validateForm.controls.userName">
+        <nz-input (keyup)="inputChange()" formControlName="userName" [nzPlaceHolder]="'输入用户名'" [nzSize]="'large'">
+          <ng-template #prefix>
+            <i class="anticon anticon-user"></i>
+          </ng-template>
+        </nz-input>
+        <div nz-form-explain *ngIf="validateForm.controls.userName.dirty&&validateForm.controls.userName.hasError('required')">Please input your username!</div>
+      </div>
+    </div>
+    <div nz-form-item>
+      <div nz-form-control [nzValidateStatus]="validateForm.controls.password">
+        <nz-input (keyup)="inputChange()" formControlName="password" [nzType]="'password'" [nzPlaceHolder]="'输入密码'" [nzSize]="'large'">
+          <ng-template #prefix>
+            <i class="anticon anticon-lock"></i>
+          </ng-template>
+        </nz-input>
+        <div nz-form-explain *ngIf="validateForm.controls.password.dirty&&validateForm.controls.password.hasError('required')">Please input your Password!</div>
+        <div class="text-error" *ngIf="submitted&&auth?.hasError" >{{auth.errMsg}}</div>
+      </div>
+    </div>
+    <div nz-form-item>
+      <div nz-form-control>
+        <label nz-checkbox formControlName="remember">
+          <span>记住密码</span>
+        </label>
+        <a [routerLink]="['../forgetpwd']" class="login-form-forgot">忘记密码</a>
+        <button nz-button class="login-form-button" [nzType]="'primary'" [nzSize]="'large'">登录</button>
+        Or
+        <a [routerLink]="['../register']">去注册!</a>
+      </div>
+    </div>
+  </form>
+</div>
