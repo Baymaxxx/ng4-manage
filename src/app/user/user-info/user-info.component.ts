@@ -12,10 +12,11 @@ export class UserInfoComponent implements OnInit {
   username: string;
   password: string;
   userId: number;
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) {
+    this.userId = Number(localStorage.getItem('userId'));    
+   }
 
   ngOnInit() {
-    this.userId = Number(localStorage.getItem('userId'));
     this.userService.findUser(this.userId)
       .then(user => {
         this.user = user;

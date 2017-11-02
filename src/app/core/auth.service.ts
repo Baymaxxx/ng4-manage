@@ -22,6 +22,7 @@ export class AuthService {
           auth.user = Object.assign({}, user);
           auth.hasError = false;
           localStorage.setItem('userId', String(user.id));
+          localStorage.setItem('username', user.username);
         } else {
           auth.hasError = true;
           auth.errMsg = '密码不正确'

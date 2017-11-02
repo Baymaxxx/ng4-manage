@@ -1,0 +1,40 @@
+@import '../../../assets/styles/core/_variables';
+
+.header{
+    width: 100%;
+    height: 64px;
+    background-color: $defaulteColor;
+    .logo{
+        margin-left: 80px;
+        width: 100px;
+        line-height: 64px;
+        img{
+            width: 100%;
+        }
+    }
+    .nav{
+        margin-left: 80px;
+        li{
+            width: 80px;
+            line-height: 64px;
+            color: #fff;
+            background-color: $defaulteColor;
+            text-align: center;
+            cursor: pointer;
+            font-size: 16px;
+            &.active,&:hover{
+                color: $defaulteColor;
+                background-color: #fff;
+            }
+        }
+    }
+    .userinfo{
+        margin-right: 50px;
+        line-height: 64px;
+        .username{
+            margin-right: 20px;
+            color: #fff;
+            cursor: pointer;
+        }
+    }
+}

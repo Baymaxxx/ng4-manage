@@ -1,3 +1,17 @@
 .text-error {
     color: $errColor;
- }
+}
+
+.pull-left{
+    float: left;
+}
+.pull-right{
+    float: right;
+}
+.clearfix:after{
+    content:".";
+    display:block;
+    height:0;
+    clear:both;
+    visibility:hidden
+}

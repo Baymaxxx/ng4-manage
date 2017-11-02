@@ -1,3 +1,4 @@
+import { AuthGuard } from './core/auth.guard';
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { HomeComponent } from './home/home.component';
 import { LayoutComponent } from './layout/layout.component';
@@ -11,15 +12,11 @@ const routes: Routes = [
     //包裹layout内
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-      { path: 'dashboard', loadChildren: './home/home.module#HomeModule' },
-     
-      {
-        path: 'todo',
-        loadChildren: './todo/todo.module#TodoModule'
-      },
+      { path: 'dashboard', loadChildren: './home/home.module#HomeModule', canActivate: [AuthGuard] },
+      { path: 'todo', loadChildren: './home/todo/todo.module#TodoModule', canActivate: [AuthGuard] },
     ]
   },
-   //单页不包裹layout
+  //单页不包裹layout
   {
     path: 'user',
     loadChildren: './user/user.module#UserModule'
@@ -30,7 +27,7 @@ const routes: Routes = [
     redirectTo: '',
     pathMatch: 'full'
   },
- 
+
 ];
 
 @NgModule({

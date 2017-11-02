@@ -1,3 +1,30 @@
-<p>
-  header works!
-</p>
+<div class="header">
+  <div class="logo pull-left">
+    <a [routerLink]="['/']">
+      <img src="./assets/img/navLogo.png" alt="joycloud">
+    </a>
+  </div>
+  <ul class="nav pull-left">
+    <li class="" 
+      [routerLinkActive]="['active']"
+      [routerLink]="['/dashboard/project']">
+      项目
+    </li>
+    <li class=""
+      [routerLinkActive]="['active']" 
+      [routerLink]="['/dashboard/rooms']">
+      考场
+    </li>
+    <li class=""
+      [routerLinkActive]="['active']" 
+      [routerLink]="['/dashboard/todo']">
+       TODO
+    </li>
+  </ul>
+  <div class="pull-right userinfo">
+    <span class="username" 
+      [routerLink]="['/user/userinfo']"
+      >{{username}}</span>
+    <app-user-logout></app-user-logout>
+  </div>
+</div>
