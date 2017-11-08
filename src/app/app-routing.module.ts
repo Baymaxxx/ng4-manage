@@ -14,6 +14,7 @@ const routes: Routes = [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', loadChildren: './home/home.module#HomeModule', canActivate: [AuthGuard] },
       { path: 'dashboard/todo', loadChildren: './home/todo/todo.module#TodoModule', canActivate: [AuthGuard] },
+      { path: 'dashboard/project/active', loadChildren: './home/project-details/project-details.module#ProjectDetailsModule', canActivate: [AuthGuard] },
     ]
   },
   //单页不包裹layout
