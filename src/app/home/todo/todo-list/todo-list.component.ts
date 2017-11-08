@@ -13,7 +13,6 @@ export class TodoListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.todos);
   }
   toggleTodo(todo: Todo): void {
     this.onToggleTodo.emit(todo);

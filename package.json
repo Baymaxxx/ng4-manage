@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --base-href ./",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -21,8 +21,10 @@
     "@angular/platform-browser": "^4.2.4",
     "@angular/platform-browser-dynamic": "^4.2.4",
     "@angular/router": "^4.2.4",
+    "@types/lodash": "^4.14.82",
     "angular2-uuid": "^1.1.1",
     "core-js": "^2.4.1",
+    "lodash": "^4.17.4",
     "ng-zorro-antd": "^0.6.0-rc.2",
     "rxjs": "^5.4.2",
     "zone.js": "^0.8.14"

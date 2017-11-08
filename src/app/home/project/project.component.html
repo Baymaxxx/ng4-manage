@@ -1,5 +1,44 @@
-<ul nz-menu [nzMode]="'horizontal'">
-    <li nz-menu-item nzSelected="true"><i class="anticon anticon-appstore"></i>活动项目</li>
-    <li nz-menu-item><i class="anticon anticon-database"></i>归档项目</li>
-</ul>
-<app-project-list [projects]="projects"></app-project-list>
+<div class="project-page clearfix">
+    <!-- 菜单 -->
+    <div class="my-menu clearfix">
+        <ul nz-menu [nzMode]="'horizontal'" class="nz-menu pull-left">
+            <li nz-menu-item nzSelected="true" 
+                [routerLink]="['/dashboard/project/active']">
+                <i class="anticon anticon-appstore"></i>活动项目</li>
+            <li nz-menu-item 
+                [routerLink]="['/dashboard/project/pigeonhole']">
+                <i class="anticon anticon-database"></i>归档项目</li>
+        </ul>
+        <ul class="pull-right">
+            <li class="pull-left" *ngIf="addProjectBtnShow" >
+                <button nz-button 
+                [nzType]="'primary'" 
+                [nzSize]="'large'"
+                (click)="addProjectModal(title, content, footer)">
+                    <i class="anticon anticon-plus"></i>
+                    添加项目
+                </button>
+            </li>
+            <li class="pull-left my-search">
+                <nz-input 
+                    [nzType]="'search'"
+                    [(ngModel)]="searchText" 
+                    name="search" 
+                    [nzPlaceHolder]="'请输入项目名称'" 
+                    [nzSize]="'large'"
+                    (nzBlur)="searchProjects(searchText)"
+                    (keyup.enter)="searchProjects(searchText)"></nz-input>
+            </li>
+        </ul>
+    </div>
+    <!-- 项目列表 -->
+    <app-project-list [projects]="thisPageProjects"></app-project-list>
+    <!-- 分页 -->
+    <nz-pagination 
+        class="pull-right" 
+        [(nzPageIndex)]="nzPageIndex" 
+        [nzTotal]="projects?.length"
+        (nzPageIndexChange)="nzPageIndexChange()"></nz-pagination>
+</div>
+
+

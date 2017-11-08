@@ -4,6 +4,7 @@ import { UserLogoutComponent } from './../user/user-logout/user-logout.component
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule ,ReactiveFormsModule} from '@angular/forms';
+import { ProjectStatusPipe } from './pipes/project-status.pipe';
 
 @NgModule({
   imports: [
@@ -13,14 +14,15 @@ import { FormsModule ,ReactiveFormsModule} from '@angular/forms';
     RouterModule,
     NgZorroAntdModule.forRoot()        
   ],
-  declarations: [UserLogoutComponent],
+  declarations: [UserLogoutComponent, ProjectStatusPipe],
   exports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     UserLogoutComponent,
     RouterModule,
-    NgZorroAntdModule
+    NgZorroAntdModule,
+    ProjectStatusPipe
   ]
 })
 export class SharedModule { }

@@ -17,7 +17,7 @@ export class AuthService {
         auth.redirectUrl = redirectUrl;
         if (user === null) {
           auth.hasError = true;
-          auth.errMsg = '用户名不正确'
+          auth.errMsg = '用户名不正确';
         } else if (password === user.password) {
           auth.user = Object.assign({}, user);
           auth.hasError = false;

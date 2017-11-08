@@ -1,10 +1,20 @@
-<section class="main" *ngIf="projects?.length > 0">
-    <ul class="project-list">
-      <li *ngFor="let project of projects" [class.completed]="project.completed">
-        <div class="view">
-          <button class="destroy" 
-          (click)="$event.stopPropagation()"></button>
-        </div>
-      </li>
-    </ul>
-  </section>  
+<section class="main gutter-example" *ngIf="projects?.length > 0">
+  <div nz-row [nzGutter]="gutter" class="project-list">
+    <div nz-col class="gutter-row" [nzSpan]="6" 
+      *ngFor="let project of projects;let i = index">
+      <div class="gutter-box">
+          <h4 class="title" title="project.name">{{project.name}}</h4>
+          <div class="publish-state">
+              <p class="desc">{{project.status | projectStatus}}</p>
+              <p class="creat-time">创建于{{project.createdTime}}</p>
+          </div>
+          <button nz-button [nzType]="'primary'" [routerLink]="['/project', project.id]">进入项目</button>
+      </div>
+    </div>
+</div>
+</section>  
+<section *ngIf="projects?.length === 0">
+  <div class="no-data">
+      暂无项目      
+  </div>
+</section>

@@ -5,19 +5,34 @@ import { Http } from '@angular/http';
 
 @Injectable()
 export class ProjectService {
+  url:string = 'https://www.easy-mock.com/mock/59fac4ea40e64216b2511120/joycloud';
   constructor(private http: Http) { }
-  filterProjects(filter: string): Promise<Project[]> {
-    const url = 'https://www.easy-mock.com/mock/59fac4ea40e64216b2511120/joycloud';
-    return this.http.get(url + '/project')
+  filterProjects(filter: string, searchText?:string): Promise<Project[]> {
+    return this.http.get(this.url + '/project')
       .toPromise()
       .then(res => {
         let projects = res.json().projects;
+        if(searchText){
+          projects = projects.filter(item => item.name.indexOf(searchText) > -1);          
+        }
         switch (filter) {
           case 'active':
-            return projects.filter(item => item.isActive === true);
+            return projects.filter(item => {
+              return item.isActive === true;
+            });
           case 'pigeonhole':
-            return projects.filter(item => item.isActive === false);
+            return projects.filter(item => {
+              return item.isActive === false; 
+            });
         }
+      })
+  }
+
+  addProject(project: Project): Promise<Project> {
+    return this.http.post(this.url + '/project', JSON.stringify(project))
+      .toPromise()
+      .then(() => {
+        return project as Project;
       })
   }
 }

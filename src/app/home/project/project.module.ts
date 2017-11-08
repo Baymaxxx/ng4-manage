@@ -5,6 +5,7 @@ import { ProjectComponent } from './project.component';
 import { ProjectService } from './../../core/services/project.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AddProjectComponent } from './add-project/add-project.component';
 
 @NgModule({
   imports: [
@@ -12,7 +13,8 @@ import { CommonModule } from '@angular/common';
     SharedModule,
     ProjectRoutingModule
   ],
-  declarations: [ProjectComponent, ProjectListComponent],
-  providers: [ProjectService]
+  declarations: [ProjectComponent, ProjectListComponent, AddProjectComponent],
+  providers: [ProjectService],
+  entryComponents: [AddProjectComponent]
 })
 export class ProjectModule { }

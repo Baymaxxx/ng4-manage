@@ -1,0 +1,44 @@
+.main{
+    .project-list{
+        .gutter-row{
+        padding: 0 2%;
+        .gutter-box {
+            position: relative;
+            padding: 16px 14px;
+            margin-bottom: 30px;
+            height: 180px;
+            box-shadow: 0 0 8px #e2e2e2;
+            border-radius: 3px;
+            background: rgb(255, 255, 255);
+            &:hover{
+                box-shadow: 0 0 15px 9px #e2e2e2;
+            }
+            .title{
+                font-size: 18px;
+                font-weight: 700;
+            }
+            .publish-state{
+                position: absolute;
+                left: 20px;
+                bottom: 10px;
+                font-size: 14px;
+            }
+            button{
+                position: absolute;
+                right: 20px;
+                bottom: 20px;
+                border: none;
+                border-radius: 4px;
+                background-color: #0f88fb;
+            }
+          }
+        }        
+    }
+}
+.no-data{
+    width:100px;
+    margin: 250px auto;
+    font-size: 22px;
+    font-weight: 700;
+    color: #999;
+}
