@@ -9,7 +9,7 @@
               <p class="creat-time">创建于{{project.createdTime}}</p>
           </div>
           <button nz-button [nzType]="'primary'" 
-            [routerLink]="['details', project.id]">进入项目</button>
+            (click)='goDetail(project.id)'>进入项目</button>
       </div>
     </div>
 </div>

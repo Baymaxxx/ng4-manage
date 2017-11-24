@@ -2,7 +2,6 @@ import { ProjectService } from './../core/services/project.service';
 import { PagesModule } from './pages/pages.module';
 import { SharedModule } from './../shared/shared.module';
 import { TodoService } from './todo/todo.service';
-import { HomeComponent } from './home.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeRoutingModule } from './home.routing';
@@ -17,8 +16,7 @@ import { RoomsComponent } from './rooms/rooms.component';
     SharedModule,
     PagesModule
   ],
-  declarations: [HomeComponent, RoomsComponent],
+  declarations: [RoomsComponent],
   providers: [ProjectService],
-  exports: [HomeComponent]
 })
 export class HomeModule { }

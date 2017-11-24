@@ -6,22 +6,21 @@ import { TodoComponent } from './todo/todo.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { HomeComponent } from './home.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'project',  pathMatch:'full' },
-  {
-    path: 'rooms',
-    component: RoomsComponent
-  },
+  { path: '', redirectTo: 'project', pathMatch: 'full' },
   {
     path: 'project',
     loadChildren: './project/project.module#ProjectModule',
   },
   {
-    path: 'todo',
-    component: HomeComponent
+    path: 'rooms',
+    component: RoomsComponent
   },
+  {
+    path: 'todo',
+    loadChildren: './todo/todo.module#TodoModule',
+  }
 ];
 
 @NgModule({

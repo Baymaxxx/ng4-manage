@@ -8,10 +8,10 @@ import { Component, OnInit } from '@angular/core';
 export class LayoutComponent implements OnInit {
   sidebar: boolean;
   constructor() {
-    this.sidebar = false;
-   }
+  }
 
   ngOnInit() {
+      this.sidebar = true;
   }
 
 }

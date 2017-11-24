@@ -6,7 +6,12 @@ import { ProjectComponent } from './project.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'active', pathMatch: 'full' },
-  { path: ':filter', component: ProjectComponent, canActivate: [AuthGuard], pathMatch: 'full' }
+  {
+    path: ':filter',
+    component: ProjectComponent,
+    canActivate: [AuthGuard],
+    pathMatch: 'full'
+  }
 ];
 
 @NgModule({

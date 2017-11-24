@@ -30,7 +30,7 @@ export class ProjectComponent implements OnInit {
       this.searchText = '';
       this.filterProjects(this.filter);
       this.addProjectBtnShow = (this.filter === 'active');
-    })
+    });
   }
 
   ngOnInit() {
