@@ -3,24 +3,21 @@ import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { UserLogoutComponent } from './../user/user-logout/user-logout.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule ,ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProjectStatusPipe } from './pipes/project-status.pipe';
+import { SidebarComponent } from '../layout/sidebar/sidebar.component';
 
+const APP_MODULE = [CommonModule, FormsModule, ReactiveFormsModule, RouterModule];
 @NgModule({
   imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    RouterModule,
-    NgZorroAntdModule.forRoot()        
+    ...APP_MODULE,
+    NgZorroAntdModule.forRoot()
   ],
-  declarations: [UserLogoutComponent, ProjectStatusPipe],
+  declarations: [SidebarComponent, UserLogoutComponent, ProjectStatusPipe],
   exports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
+    ...APP_MODULE,
+    SidebarComponent,
     UserLogoutComponent,
-    RouterModule,
     NgZorroAntdModule,
     ProjectStatusPipe
   ]

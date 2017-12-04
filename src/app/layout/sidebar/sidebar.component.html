@@ -1,3 +1,11 @@
-<p>
-  sidebar works!
-</p>
+<nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
+  <ul nz-menu [nzTheme]="'white'" [nzMode]="isCollapsed?'vertical':'inline'">
+    <li nz-menu-item>
+      <span title><i class="anticon anticon-user"></i><span class="nav-text">User</span></span>
+    </li>
+    <li nz-menu-item>
+      <span title><i class="anticon anticon-team"></i><span class="nav-text">Team</span></span>
+    </li>
+    <li nz-menu-item><span><i class="anticon anticon-file"></i><span class="nav-text">File</span></span></li>
+  </ul>
+</nz-sider>

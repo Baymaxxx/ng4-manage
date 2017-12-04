@@ -1,4 +1,8 @@
 <div class="header">
+    <div class="item" 
+        (click)="toggleCollapsedSideabar()">
+        <i class="anticon anticon-menu-{{settings.layout.collapsed ? 'unfold' : 'fold'}}"></i>
+    </div>
   <div class="logo pull-left">
     <a [routerLink]="['/']">
       <!-- <img src="http://placehold.it/200x100" alt="joycloud"> -->

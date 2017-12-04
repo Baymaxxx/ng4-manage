@@ -1,5 +1,9 @@
 <div class="wrapper">
   <app-header></app-header>
-  <app-sidebar *ngIf="sidebar"></app-sidebar>
-  <section class="content"><router-outlet></router-outlet></section>
+  <nz-layout class="layout">
+    <app-sidebar class="sidebar"></app-sidebar>
+    <nz-layout class="content">
+      <router-outlet></router-outlet>
+    </nz-layout>
+  </nz-layout>
 </div>

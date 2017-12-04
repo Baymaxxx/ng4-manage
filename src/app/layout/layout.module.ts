@@ -4,19 +4,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { NosideLayoutComponent } from './noside-layout/noside-layout.component';
 
 const COMPONENT = [
-  HeaderComponent, 
-  SidebarComponent,
-  LayoutComponent
-]
+  HeaderComponent,
+  LayoutComponent];
 
 @NgModule({
   imports: [
     CommonModule,
     SharedModule
   ],
-  declarations: [...COMPONENT],
-  exports:COMPONENT
+  declarations: [...COMPONENT, NosideLayoutComponent],
+  exports: COMPONENT
 })
 export class LayoutModule { }

@@ -1,0 +1,15 @@
+.layout{
+    background: #fff;
+}
+.sidebar{
+    flex: 0 0 200px;
+    width: 200px;
+}
+.content{
+    .content-inner{
+        flex: 1;
+    }
+}
+.ant-layout {
+    flex-direction:unset;
+}

@@ -5,15 +5,15 @@ import { Http } from '@angular/http';
 
 @Injectable()
 export class ProjectService {
-  url:string = 'https://www.easy-mock.com/mock/59fac4ea40e64216b2511120/joycloud';
+  url: string = 'https://www.easy-mock.com/mock/59fac4ea40e64216b2511120/joycloud';
   constructor(private http: Http) { }
-  filterProjects(filter: string, searchText?:string): Promise<Project[]> {
+  filterProjects(filter: string, searchText?: string): Promise<Project[]> {
     return this.http.get(this.url + '/project')
       .toPromise()
       .then(res => {
         let projects = res.json().projects;
-        if(searchText){
-          projects = projects.filter(item => item.name.indexOf(searchText) > -1);          
+        if (searchText) {
+          projects = projects.filter(item => item.name.indexOf(searchText) > -1);
         }
         switch (filter) {
           case 'active':
@@ -22,7 +22,7 @@ export class ProjectService {
             });
           case 'pigeonhole':
             return projects.filter(item => {
-              return item.isActive === false; 
+              return item.isActive === false;
             });
         }
       })
@@ -33,6 +33,6 @@ export class ProjectService {
       .toPromise()
       .then(() => {
         return project as Project;
-      })
+      });
   }
 }
