@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { LocalStorageService } from 'angular-web-storage';
+import { SettingsService } from './../../core/services/settings.service';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+
 
 @Component({
   selector: 'app-header',
@@ -7,10 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   username: string;
-  constructor() { }
+  @Input() hasCollapsed: boolean;
+  @Output() changeCollapsed: EventEmitter<boolean> = new EventEmitter();
+  constructor(
+    private settings: SettingsService,
+    private storage: LocalStorageService
+  ) { }
 
   ngOnInit() {
-    this.username = localStorage.getItem('username')
+    this.username = this.storage.get('user').username;
   }
-
+  toggleCollapsedSideabar() {
+    this.settings.setLayout('collapsed', !this.settings.layout.collapsed);
+    this.changeCollapsed.emit(this.settings.layout.collapsed);
+  }
 }

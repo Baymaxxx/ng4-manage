@@ -1,5 +1,6 @@
 <div class="header">
-    <div class="item" 
+    <div *ngIf="hasCollapsed" 
+         class="nav-control pull-left" 
         (click)="toggleCollapsedSideabar()">
         <i class="anticon anticon-menu-{{settings.layout.collapsed ? 'unfold' : 'fold'}}"></i>
     </div>

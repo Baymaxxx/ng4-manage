@@ -7,6 +7,7 @@ import {
   FormGroup,
   Validators
 } from '@angular/forms';
+import { LocalStorageService } from 'angular-web-storage';
 
 @Component({
   selector: 'app-user-login',
@@ -19,13 +20,15 @@ export class UserLoginComponent implements OnInit {
   submitted: boolean;
   constructor(private authService: AuthService,
     private router: Router,
-    private fb: FormBuilder) { }
+    private fb: FormBuilder,
+    private local: LocalStorageService
+  ) { }
 
   ngOnInit() {
     this.validateForm = this.fb.group({
-      userName: [ null, [ Validators.required ] ],
-      password: [ null, [ Validators.required ] ],
-      remember: [ true ],
+      userName: [null, [Validators.required]],
+      password: [null, [Validators.required]],
+      remember: [true],
     });
   }
   inputChange(): void {
@@ -33,22 +36,24 @@ export class UserLoginComponent implements OnInit {
   }
   _submitForm(): void {
     for (const i in this.validateForm.controls) {
-      this.validateForm.controls[ i ].markAsDirty();
+      if (this.validateForm.controls.hasOwnProperty(i)) {
+        this.validateForm.controls[i].markAsDirty();
+      }
     }
-    let formValue = this.validateForm.value;
+    const formValue = this.validateForm.value;
     console.log(this.validateForm.controls);
-    
+
     this.authService.loginWithCredentials(formValue.userName, formValue.password)
       .then(auth => {
         console.log(auth);
-        let redirectUrl = (auth.redirectUrl === null) ? '/' : auth.redirectUrl;
+        const redirectUrl = (auth.redirectUrl === null) ? '/' : auth.redirectUrl;
         if (!auth.hasError) {
           this.router.navigate([redirectUrl]);
-          localStorage.removeItem('redirectUrl');
+          this.local.remove('redirectUrl');
         } else {
-          this.auth = Object.assign({},auth);
+          this.auth = Object.assign({}, auth);
         }
-      })
+      });
     this.submitted = true;
   }
 }

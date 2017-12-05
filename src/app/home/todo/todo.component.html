@@ -4,7 +4,9 @@
 <section class="todoapp">
   <header class="header">
     <h1>Todos</h1>
-    <input class="new-todo" placeholder="What needs to be done?" autofocus="" [(ngModel)]="desc" (keyup.enter)="addTodo()">
+    <input class="new-todo" placeholder="What needs to be done?" autofocus="" 
+    [(ngModel)]="desc" 
+    (keyup.enter)="addTodo()">
   </header>
   <app-todo-list 
     [todos]="todos" 

@@ -13,28 +13,28 @@ export class TodoComponent implements OnInit {
   desc: string;
   constructor(
     private todoService: TodoService,
-    private router:Router,
-    private route:ActivatedRoute) {
-      this.todos = [];
-      this.desc = '';      
-      this.route.params.forEach((params: Params) => {
-        let filter = params['filter'];
-        this.filterTodos(filter);
-      }) 
+    private router: Router,
+    private route: ActivatedRoute) {
+    this.todos = [];
+    this.desc = '';
+    this.route.params.forEach((params: Params) => {
+      const filter = params['filter'];
+      this.filterTodos(filter);
+    });
   }
 
   ngOnInit() {
-    let want = () => {
+    const want = () => {
       console.log('这是你想要执行的代码');
-    }
-    let fn = () => {
+    };
+    const fn = () => {
       return new Promise((resolve, resject) => {
         resolve();
-      })
-    }
+      });
+    };
     fn().then(() => {
       want();
-    })
+    });
   }
   addTodo(): void {
     this.todoService.addTodo(this.desc)
@@ -43,31 +43,32 @@ export class TodoComponent implements OnInit {
 
         this.todos.push(todos);
         this.desc = '';
-      })
+      });
   }
 
   toggleTodo(todo: Todo): Promise<void> {
     console.log(todo);
-    
+
     let i = this.todos.indexOf(todo);
     return this.todoService.toggleTodo(todo)
       .then(updateTodo => {
         this.todos[i] = updateTodo;
         return null;
-      })
+      });
   }
   removeTodo(todo: Todo): void {
     let i = this.todos.indexOf(todo);
     this.todoService.deleteTodoById(todo.id)
       .then(() => {
-        this.todos = [...this.todos.slice(0, i),...this.todos.slice(i+1)]
-      })
+        this.todos = [...this.todos.slice(0, i), ...this.todos.slice(i + 1)]
+      });
   }
   filterTodos(filter: string) {
     this.todoService.filterTodos(filter)
       .then(todos => {
         this.todos = todos;
-      })
+        console.log(todos);
+      });
   }
   clearCompleted(todos: Todo[]) {
     let completed_todos = this.todos.filter(item => item.completed === true);
@@ -76,7 +77,7 @@ export class TodoComponent implements OnInit {
       this.todoService.deleteTodoById(item.id)
         .then(() => {
           this.todos = active_todos;
-        })      
-    })
+        });
+    });
   }
 }

@@ -1,3 +1,4 @@
+import { SettingsService } from './../core/services/settings.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent implements OnInit {
-  constructor() {
+  isCollapsed: boolean;
+  constructor(
+    private setting: SettingsService
+  ) {
   }
 
   ngOnInit() {
+    this.changeCollapsed(this.setting.layout.collapsed);
   }
 
+  changeCollapsed(collapsed: boolean) {
+    this.isCollapsed = collapsed;
+  }
 }

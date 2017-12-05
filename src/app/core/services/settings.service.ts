@@ -7,6 +7,7 @@ const KEY = 'layout';
 export interface User {
   name?: string;
   avatar?: string;
+  id?: number;
   email?: string;
   [key: string]: any;
 }
