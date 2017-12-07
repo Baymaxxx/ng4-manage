@@ -1,4 +1,4 @@
-import { AuthGuard } from './../core/auth.guard';
+import { AuthGuard } from './../../core/auth.guard';
 import { ForgetPwdComponent } from './forget-pwd/forget-pwd.component';
 import { UserRegisterComponent } from './user-register/user-register.component';
 import { UserInfoComponent } from './user-info/user-info.component';
@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'userinfo', component: UserInfoComponent, canActivate: [AuthGuard] },
   { path: 'register', component: UserRegisterComponent },
   { path: 'forgetpwd', component: ForgetPwdComponent },
-  { path: 'login', component: UserLoginComponent }  
+  { path: 'login', component: UserLoginComponent }
 ];
 
 @NgModule({

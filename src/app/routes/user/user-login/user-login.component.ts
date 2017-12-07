@@ -1,6 +1,4 @@
 import { Router } from '@angular/router';
-import { Auth } from './../../core/model/auth.model';
-import { AuthService } from './../../core/auth.service';
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -8,6 +6,8 @@ import {
   Validators
 } from '@angular/forms';
 import { LocalStorageService } from 'angular-web-storage';
+import { Auth } from '../../../core/model/auth.model';
+import { AuthService } from '../../../core/auth.service';
 
 @Component({
   selector: 'app-user-login',

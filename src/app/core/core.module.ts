@@ -12,6 +12,7 @@ import { LocalStorageService } from 'angular-web-storage';
   declarations: [],
   providers: [AuthGuard, AuthService, SettingsService, LocalStorageService]
 })
+// 既然是允许根模块才需要的核心模块，就不允许在其他地方被导入。所以还需要一个防止不小心的人。
 export class CoreModule {
   constructor( @Optional() @SkipSelf() parentModule: CoreModule) {
     if (parentModule) {

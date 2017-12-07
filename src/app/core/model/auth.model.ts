@@ -1,4 +1,4 @@
-import { User } from './../../user/model/user.model';
+import { User } from './../../routes/user/model/user.model';
 export class Auth {
     redirectUrl: string;
     user: User;

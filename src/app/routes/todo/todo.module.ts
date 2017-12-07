@@ -1,7 +1,7 @@
 import { TodoRoutingModule } from './todo.routing';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { UserModule } from './../../user/user.module';
+import { UserModule } from './../../routes/user/user.module';
 import { SharedModule } from './../../shared/shared.module';
 import { TodoService } from './todo.service';
 import { TodoComponent } from './todo.component';

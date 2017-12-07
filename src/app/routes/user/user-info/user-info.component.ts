@@ -13,8 +13,8 @@ export class UserInfoComponent implements OnInit {
   password: string;
   userId: number;
   constructor(private userService: UserService) {
-    this.userId = Number(localStorage.getItem('userId'));    
-   }
+    this.userId = Number(localStorage.getItem('userId'));
+  }
 
   ngOnInit() {
     this.userService.findUser(this.userId)

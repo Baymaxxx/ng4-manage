@@ -1,3 +1,4 @@
+import { LocalStorageService } from 'angular-web-storage';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,12 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserLogoutComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor(private router: Router,
+    private local: LocalStorageService
+  ) { }
 
   ngOnInit() {
   }
   logout() {
-    localStorage.removeItem('userId');
+    this.local.remove('user');
     this.router.navigate(['/user/login']);
   }
 }
