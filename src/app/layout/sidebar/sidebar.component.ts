@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { MenuService, Menu } from './../../core/services/menu.service';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -7,9 +9,15 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
   @Input() isCollapsed: boolean;
-  constructor() { }
+
+  menus: Menu[];
+  constructor(public menuS: MenuService,
+    private router: Router,
+  ) { }
 
   ngOnInit() {
+    this.menus = this.menuS.menus;
+    console.log(this.menus);
   }
 
 }

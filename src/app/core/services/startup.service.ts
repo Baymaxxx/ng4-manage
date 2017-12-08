@@ -21,6 +21,7 @@ export class StartupService {
         .subscribe((res: any) => {
         this.setting.setApp(res.app);
         this.setting.setUser(res.user);
+        this.menu.add(res.menu);
         resolve(res);
       }, (err: HttpErrorResponse) => {
         resolve(null);

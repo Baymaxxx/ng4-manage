@@ -1,6 +1,6 @@
 import { AddProjectComponent } from './add-project/add-project.component';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { ProjectService } from './../../core/services/project.service';
+import { ProjectService } from './project.service';
 import { Project } from './../../shared/models/project.model';
 import { Component, OnInit } from '@angular/core';
 import { NzModalService, NzMessageService } from 'ng-zorro-antd';
@@ -41,9 +41,9 @@ export class ProjectComponent implements OnInit {
       .then(projects => {
         this.projects = _.sortBy(projects, (item) => {
           return -item.createdTime;
-        })
+        });
         this.getThisPageProjects();
-      })
+      });
   }
 
   getThisPageProjects(pageIndex: number = 1) {
@@ -63,14 +63,14 @@ export class ProjectComponent implements OnInit {
 
   addPorject(result: any) {
     let project = {
-      id: '12345678910',//项目id
-      name: result.projectName,//项目名称
-      status: 0,//项目状态
-      createdTime: new Date().toLocaleDateString(),//项目创建时间
-      isActive: true,//活动or归档
-      principal: result.projectPrincipal,//项目负责人
-      startTime: result.projectStartTime,//项目开始时间
-      endTime: result.projectEndTime//项目结束时间
+      id: '12345678910', // 项目id
+      name: result.projectName, // 项目名称
+      status: 0, // 项目状态
+      createdTime: new Date().toLocaleDateString(), // 项目创建时间
+      isActive: true, // 活动or归档
+      principal: result.projectPrincipal, // 项目负责人
+      startTime: result.projectStartTime, // 项目开始时间
+      endTime: result.projectEndTime// 项目结束时间
     }
     this.projectService.addProject(project)
       .then((project) => {
@@ -95,12 +95,12 @@ export class ProjectComponent implements OnInit {
         name: ''
       }
     });
-    //接收modal数据
+    // 接收modal数据
     subscription.subscribe(result => {
       if (typeof result === 'object') {
         this.addPorject(result);
       }
-    })
+    });
   }
 
 

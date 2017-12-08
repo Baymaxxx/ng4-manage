@@ -1,3 +1,4 @@
+import { LocalStorageService } from 'angular-web-storage';
 import { UserService } from './../user.service';
 import { User } from './../model/user.model';
 import { Component, OnInit } from '@angular/core';
@@ -9,20 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserInfoComponent implements OnInit {
   user: User;
-  username: string;
-  password: string;
-  userId: number;
-  constructor(private userService: UserService) {
-    this.userId = Number(localStorage.getItem('userId'));
+  constructor(
+    private local: LocalStorageService
+  ) {
+    this.user = this.local.get('user');
   }
 
   ngOnInit() {
-    this.userService.findUser(this.userId)
-      .then(user => {
-        this.user = user;
-        let { id, username, password } = this.user;
-        this.username = username;
-        this.password = password;
-      });
   }
 }

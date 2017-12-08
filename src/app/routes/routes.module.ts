@@ -1,4 +1,4 @@
-import { ProjectService } from './../core/services/project.service';
+import { ProjectService } from './project/project.service';
 import { PagesModule } from './pages/pages.module';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from './../shared/shared.module';

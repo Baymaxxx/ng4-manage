@@ -31,7 +31,7 @@ export class TodoService {
       .toPromise()
       .then(() => {
         return updateTodo;
-      })
+      });
   }
   // DELETE /todos/:id
   deleteTodoById(id: string): Promise<void> {
