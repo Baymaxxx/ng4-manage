@@ -1,3 +1,8 @@
+/** 关于angular2+ 拦截器：
+    1:http://ng-alain.com/docs/net
+    2:http://www.jianshu.com/p/4af551ad0901
+**/
+
 import { environment } from './../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
