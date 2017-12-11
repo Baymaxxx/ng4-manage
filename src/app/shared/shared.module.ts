@@ -6,8 +6,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProjectStatusPipe } from './pipes/project-status.pipe';
 import { SidebarComponent } from '../layout/sidebar/sidebar.component';
 import { UserLogoutComponent } from '../routes/user/user-logout/user-logout.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-const APP_MODULE = [CommonModule, FormsModule, ReactiveFormsModule, RouterModule];
+const APP_MODULE = [
+  CommonModule,
+  FormsModule,
+  ReactiveFormsModule,
+  RouterModule,
+  HttpClientModule
+];
 @NgModule({
   imports: [
     ...APP_MODULE,

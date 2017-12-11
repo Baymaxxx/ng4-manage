@@ -31,11 +31,27 @@ export const routes = [
   },
   // 包裹layout内有sidebar
   {
-    path: 'project',
+    path: 'view',
     component: LayoutComponent,
     children: [{
       path: '',
       loadChildren: './project/project-view/project-view.module#ProjectViewModule',
+    }]
+  },
+  {
+    path: 'config',
+    component: LayoutComponent,
+    children: [{
+      path: '',
+      loadChildren: './project/project-config/project-config.module#ProjectConfigModule',
+    }]
+  },
+  {
+    path: 'monitor',
+    component: LayoutComponent,
+    children: [{
+      path: '',
+      loadChildren: './project/project-monitor/project-monitor.module#ProjectMonitorModule',
     }]
   },
   // 单页不包裹layout

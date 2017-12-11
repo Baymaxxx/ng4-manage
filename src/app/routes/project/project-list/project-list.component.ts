@@ -1,6 +1,8 @@
 import { Project } from './../../../shared/models/project.model';
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { LocalStorageService } from '../../../../../node_modules/_angular-web-storage@1.0.0@angular-web-storage/core/service';
+import { ProjectService } from '../project.service';
 
 @Component({
   selector: 'app-project-list',
@@ -10,11 +12,19 @@ import { Router } from '@angular/router';
 export class ProjectListComponent implements OnInit {
   @Input() projects: Project[];
   selectProject: Project;
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+  private local: LocalStorageService,
+  private projectS: ProjectService
+  ) { }
   ngOnInit() {
-    console.log(this.projects);
   }
   goDetail(id: string): void {
-    this.router.navigate(['/project', id]);
+    this.projectS.getProjectById(id)
+      .then(project => {
+        this.selectProject = project;
+        console.log(this.selectProject);
+        this.local.set('project', project);
+      });
+    this.router.navigate(['/view']);
   }
 }

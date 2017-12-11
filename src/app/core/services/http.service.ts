@@ -5,10 +5,9 @@
 
 import { environment } from './../../../environments/environment';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import * as moment from 'moment';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/do';
+import { Observable } from 'rxjs/Rx';
 /**
  * 封装HttpClient:
  *    优化HttpClient在参数上便利性
@@ -17,11 +16,13 @@ import 'rxjs/add/operator/do';
  */
 @Injectable()
 export class HttpService {
+  private _loading: boolean;
   constructor(
     private http: HttpClient
-  ) { }
+  ) {
+    this._loading = false;
+  }
 
-  private _loading: boolean = false;
 
   // 是否在loading
   get loading(): boolean {
@@ -62,23 +63,23 @@ export class HttpService {
     return environment.SERVER_URL;
   }
 
-   /**
-     * GET请求
-     *
-     * @param {string} url URL地址
-     * @param {*} [params] 请求参数
-     */
-    get(url: string, params?: any): Observable<any> {
-      this.begin();
-      return this.http
-          .get(url, {
-              params: this.parseParams(params)
-          })
-          .do(() => this.end())
-          .catch((res) => {
-              this.end();
-              return res;
-          });
+  /**
+    * GET请求
+    *
+    * @param {string} url URL地址
+    * @param {*} [params] 请求参数
+    */
+  get(url: string, params?: any): Observable<any> {
+    this.begin();
+    return this.http
+      .get(url, {
+        params: this.parseParams(params)
+      })
+      .do(() => this.end())
+      .catch((res) => {
+        this.end();
+        return res;
+      });
   }
 
   /**
@@ -89,16 +90,16 @@ export class HttpService {
    * @param {*} [params] 请求参数
    */
   post(url: string, body?: any, params?: any): Observable<any> {
-      this.begin();
-      return this.http
-          .post(url, body || null, {
-              params: this.parseParams(params)
-          })
-          .do(() => this.end())
-          .catch((res) => {
-              this.end();
-              return res;
-          });
+    this.begin();
+    return this.http
+      .post(url, body || null, {
+        params: this.parseParams(params)
+      })
+      .do(() => this.end())
+      .catch((res) => {
+        this.end();
+        return res;
+      });
   }
 
   /**
@@ -108,15 +109,15 @@ export class HttpService {
    * @param {*} [params] 请求参数
    */
   delete(url: string, params?: any): Observable<any> {
-      this.begin();
-      return this.http
-          .delete(url, {
-              params: this.parseParams(params)
-          })
-          .do(() => this.end())
-          .catch((res) => {
-              this.end();
-              return res;
-          });
+    this.begin();
+    return this.http
+      .delete(url, {
+        params: this.parseParams(params)
+      })
+      .do(() => this.end())
+      .catch((res) => {
+        this.end();
+        return res;
+      });
   }
 }

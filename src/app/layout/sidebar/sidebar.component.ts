@@ -17,7 +17,6 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() {
     this.menus = this.menuS.menus;
-    console.log(this.menus);
   }
 
 }

@@ -25,7 +25,19 @@ export class ProjectService {
               return item.isActive === false;
             });
         }
-      })
+      });
+  }
+
+  getProjectById(id: string): Promise<Project> {
+    return this.http.get(this.url + '/project')
+      .toPromise()
+      .then(res => {
+        const projects = res.json().projects;
+        const project = projects.find(item => {
+          return item.id === id;
+        });
+        return project as Project;
+      });
   }
 
   addProject(project: Project): Promise<Project> {

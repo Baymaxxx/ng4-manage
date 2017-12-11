@@ -13,7 +13,11 @@ import { AddProjectComponent } from './add-project/add-project.component';
     SharedModule,
     ProjectRoutingModule
   ],
-  declarations: [ProjectComponent, ProjectListComponent, AddProjectComponent],
+  declarations: [
+    ProjectComponent,
+    ProjectListComponent,
+    AddProjectComponent
+  ],
   providers: [ProjectService],
   entryComponents: [AddProjectComponent]
 })

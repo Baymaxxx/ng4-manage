@@ -1,24 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import { ProjectViewComponent } from './project-view.component';
+import { ProjectMonitorComponent } from './project-monitor.component';
 import { SharedModule } from '../../../shared/shared.module';
 
 const routes: Routes = [
-  { path: '', component: ProjectViewComponent }
+  { path: '', component: ProjectMonitorComponent }
 ];
-
 @NgModule({
   imports: [
+    CommonModule,
     SharedModule,
     RouterModule.forChild(routes),
-    CommonModule
   ],
   declarations: [
-    ProjectViewComponent
+    ProjectMonitorComponent
   ],
   exports: [
     RouterModule
-  ],
+  ]
 })
-export class ProjectViewModule { }
+export class ProjectMonitorModule { }

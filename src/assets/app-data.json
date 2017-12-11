@@ -10,5 +10,21 @@
         "avatar": "./assets/img/zorro.svg",
         "email": "81243232@qq.com"
     },
-    "menu": ["项目一览", "项目配置", "考试监控"]
+    "menu": [
+        {
+            "text": "项目一览",
+            "link": "/view",
+            "icon": "anticon-database"
+        },
+        { 
+            "text": "项目配置",
+            "link": "/config",
+            "icon": "anticon-edit"
+        },
+        {
+            "text":"考试监控",
+            "link": "/monitor",
+            "icon": "anticon-video-camera"
+        }
+    ]
 }

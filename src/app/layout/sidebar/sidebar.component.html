@@ -3,24 +3,15 @@
   [nzTrigger]="null">
   <ul nz-menu [nzTheme]="'white'" 
     [nzMode]="isCollapsed?'vertical':'inline'">
-    <li nz-menu-item 
-        [routerLink]="['/project']"
-        [routerLinkActive]="['ant-menu-item-selected']">
+        <li nz-menu-item 
+        [routerLink]="item.link"
+        [routerLinkActive]="['ant-menu-item-selected']"
+        *ngFor="let item of menus"
+        >
       <span title>
-        <i class="anticon anticon-file"></i><span class="nav-text">项目一览</span>
+        <i class="anticon {{item.icon}}"></i>
+        <span class="nav-text">{{item.text}}</span>
       </span>
     </li>
-    <li nz-menu-item>
-      <span title><i class="anticon anticon-file"></i><span class="nav-text">项目配置</span></span>
-    </li>
-    {{menus}}
-    <li nz-menu-item><span><i class="anticon anticon-file"></i><span class="nav-text">考试监控</span></span></li>
-    <li nz-menu-item><span><i class="anticon anticon-file"></i><span class="nav-text">考生查询</span></span></li>
-    <li nz-menu-item><span><i class="anticon anticon-file"></i><span class="nav-text">科目管理</span></span></li>
-    <li nz-menu-item><span><i class="anticon anticon-file"></i><span class="nav-text">试卷管理</span></span></li>
-    <li nz-menu-item><span><i class="anticon anticon-file"></i><span class="nav-text">事件处理</span></span></li>
-    <li nz-menu-item><span><i class="anticon anticon-file"></i><span class="nav-text">日志查询</span></span></li>
-    <li nz-menu-item><span><i class="anticon anticon-file"></i><span class="nav-text">项目编排</span></span></li>
-    <li nz-menu-item><span><i class="anticon anticon-file"></i><span class="nav-text">数据统计</span></span></li>
   </ul>
 </nz-sider>

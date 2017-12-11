@@ -23,11 +23,13 @@
         width: 100px;
         line-height: 64px;
         img{
-            width: 100%;
+            width: 80%;
         }
     }
     .nav{
-        margin-left: 80px;
+        position: relative;
+        z-index: 1;
+        margin-left: 20px;
         li{
             width: 80px;
             line-height: 64px;
@@ -41,6 +43,14 @@
                 background-color: #fff;
             }
         }
+    }
+    .exam-title{
+        position: absolute;
+        width: 100%;
+        line-height: 64px;
+        font-size: 20px;
+        font-weight: 700;
+        color: #fff;
     }
     .userinfo{
         margin-right: 50px;

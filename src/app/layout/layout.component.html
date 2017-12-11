@@ -1,7 +1,9 @@
 <div class="wrapper">
   <app-header 
      (changeCollapsed)="changeCollapsed($event)"
-     [hasCollapsed]="true"></app-header>
+     [hasCollapsed]="true"
+     [project]="project"
+     ></app-header>
   <nz-layout class="layout">
     <app-sidebar [isCollapsed]="isCollapsed" class="sidebar"></app-sidebar>
     <nz-layout class="content">
