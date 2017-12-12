@@ -1,9 +1,13 @@
 <nz-content style="margin:0 16px;">
   <nz-breadcrumb style="margin:12px 0;">
-    <nz-breadcrumb-item>项目</nz-breadcrumb-item>
+    <nz-breadcrumb-item >项目</nz-breadcrumb-item>
     <nz-breadcrumb-item>项目概览</nz-breadcrumb-item>
   </nz-breadcrumb>
-  <div>
-    Bill is a cat.
-  </div>
+  <ul>
+    <li>项目id: {{project.id}}</li>
+    <li>项目名称name: {{project.name}}</li>
+    <li>项目状态status: {{project.status | projectStatus}}</li>
+    <li>项目创建时间createdTime: {{project.createdTime}}</li>
+    <li>项目负责人principal: {{project.principal}}</li>
+  </ul>
 </nz-content>

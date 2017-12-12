@@ -1,3 +1,5 @@
+import { LocalStorageService } from 'angular-web-storage';
+import { Project } from './../../../shared/models/project.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./project-view.component.scss']
 })
 export class ProjectViewComponent implements OnInit {
-  isCollapsed = false;
-  constructor() { }
+  project: Project;
+  constructor(
+    private local: LocalStorageService
+  ) { }
 
   ngOnInit() {
+    this.project = this.local.get('project');
+    console.log(this.project);
   }
 
 }

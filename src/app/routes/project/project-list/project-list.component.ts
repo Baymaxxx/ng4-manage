@@ -13,8 +13,8 @@ export class ProjectListComponent implements OnInit {
   @Input() projects: Project[];
   selectProject: Project;
   constructor(private router: Router,
-  private local: LocalStorageService,
-  private projectS: ProjectService
+    private local: LocalStorageService,
+    private projectS: ProjectService
   ) { }
   ngOnInit() {
   }
@@ -22,9 +22,8 @@ export class ProjectListComponent implements OnInit {
     this.projectS.getProjectById(id)
       .then(project => {
         this.selectProject = project;
-        console.log(this.selectProject);
         this.local.set('project', project);
+        this.router.navigate(['/view']);
       });
-    this.router.navigate(['/view']);
   }
 }

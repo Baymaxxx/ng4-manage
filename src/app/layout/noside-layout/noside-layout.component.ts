@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LocalStorageService } from '../../../../node_modules/_angular-web-storage@1.0.0@angular-web-storage/core/service';
 
 @Component({
   selector: 'app-noside-layout',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NosideLayoutComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private local: LocalStorageService
+  ) { }
 
   ngOnInit() {
+    this.local.remove('project');
   }
 
 }

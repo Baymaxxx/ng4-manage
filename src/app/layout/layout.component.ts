@@ -1,14 +1,14 @@
 import { SettingsService } from './../core/services/settings.service';
-import { Component, OnInit, OnDestroy, AfterViewChecked, DoCheck } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Project } from '../shared/models/project.model';
-import { LocalStorageService } from '../../../node_modules/_angular-web-storage@1.0.0@angular-web-storage/core/service';
+import { LocalStorageService } from 'angular-web-storage';
 
 @Component({
   selector: 'app-layout',
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss']
 })
-export class LayoutComponent implements OnInit, OnDestroy, AfterViewChecked, DoCheck {
+export class LayoutComponent implements OnInit {
   isCollapsed: boolean;
   project: Project;
   constructor(
@@ -19,23 +19,10 @@ export class LayoutComponent implements OnInit, OnDestroy, AfterViewChecked, DoC
 
   ngOnInit() {
     this.changeCollapsed(this.setting.layout.collapsed);
-    console.log(this.project, 1);
+    this.project = this.local.get('project');
   }
 
   changeCollapsed(collapsed: boolean) {
     this.isCollapsed = collapsed;
-  }
-
-  ngDoCheck() {
-    this.project = this.local.get('project');
-    console.log('ngDoCheck');
-  }
-
-  ngAfterViewChecked() {
-    console.log('ngAfterViewChecked');
-  }
-
-  ngOnDestroy() {
-    console.log('OnDestroy');
   }
 }

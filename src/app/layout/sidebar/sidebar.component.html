@@ -3,15 +3,15 @@
   [nzTrigger]="null">
   <ul nz-menu [nzTheme]="'white'" 
     [nzMode]="isCollapsed?'vertical':'inline'">
-        <li nz-menu-item 
+      <li nz-menu-item 
         [routerLink]="item.link"
         [routerLinkActive]="['ant-menu-item-selected']"
         *ngFor="let item of menus"
         >
-      <span title>
-        <i class="anticon {{item.icon}}"></i>
-        <span class="nav-text">{{item.text}}</span>
-      </span>
+        <span title>
+          <i class="anticon {{item.icon}}"></i>
+          <span class="nav-text">{{item.text}}</span>
+        </span>
     </li>
   </ul>
 </nz-sider>

@@ -20,6 +20,7 @@ export class ProjectComponent implements OnInit {
   thisPageProjects: Project[];
   filter: string;
   isConfirmLoading: boolean = false;
+  dataLoading: boolean = true;
   constructor(private projectService: ProjectService,
     private modalService: NzModalService,
     private _message: NzMessageService,
@@ -37,12 +38,16 @@ export class ProjectComponent implements OnInit {
   }
 
   filterProjects(filter: string, searchText: string = '') {
+    this.dataLoading = true;
     this.projectService.filterProjects(filter, searchText)
       .then(projects => {
         this.projects = _.sortBy(projects, (item) => {
           return -item.createdTime;
         });
         this.getThisPageProjects();
+        setTimeout(() => {
+          this.dataLoading = false;
+        }, 500);
       });
   }
 

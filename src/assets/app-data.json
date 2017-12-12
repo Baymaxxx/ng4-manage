@@ -22,7 +22,7 @@
             "icon": "anticon-edit"
         },
         {
-            "text":"考试监控",
+            "text":"项目监控",
             "link": "/monitor",
             "icon": "anticon-video-camera"
         }

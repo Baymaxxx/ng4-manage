@@ -31,14 +31,19 @@
             </li>
         </ul>
     </div>
-    <!-- 项目列表 -->
-    <app-project-list [projects]="thisPageProjects"></app-project-list>
-    <!-- 分页 -->
-    <nz-pagination 
-        class="pull-right" 
-        [(nzPageIndex)]="nzPageIndex" 
-        [nzTotal]="projects?.length"
-        (nzPageIndexChange)="nzPageIndexChange()"></nz-pagination>
+    <div *ngIf="!dataLoading">
+        <!-- 项目列表 -->
+        <app-project-list [projects]="thisPageProjects"></app-project-list>
+        <!-- 分页 -->
+        <nz-pagination 
+            class="pull-right" 
+            [(nzPageIndex)]="nzPageIndex" 
+            [nzTotal]="projects?.length"
+            (nzPageIndexChange)="nzPageIndexChange()"></nz-pagination>
+    </div>
+    <div *ngIf="dataLoading" class="text-center">
+        <nz-spin [nzTip]="'正在加载数据...'" [nzSize]="'large'" [nzSpinning]="true"></nz-spin>
+    </div>
 </div>
 
 

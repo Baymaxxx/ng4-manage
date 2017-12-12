@@ -1,3 +1,4 @@
+import { AuthleaveComponent } from './components/authleave/authleave.component';
 import { RouterModule } from '@angular/router';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { NgModule } from '@angular/core';
@@ -20,13 +21,14 @@ const APP_MODULE = [
     ...APP_MODULE,
     NgZorroAntdModule.forRoot()
   ],
-  declarations: [SidebarComponent, UserLogoutComponent, ProjectStatusPipe],
+  declarations: [SidebarComponent, UserLogoutComponent, ProjectStatusPipe, AuthleaveComponent],
   exports: [
     ...APP_MODULE,
     SidebarComponent,
     UserLogoutComponent,
     NgZorroAntdModule,
-    ProjectStatusPipe
+    ProjectStatusPipe,
+    AuthleaveComponent
   ]
 })
 export class SharedModule { }

@@ -6,8 +6,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { TodoComponent } from './todo.component';
 
 const routes: Routes = [
-  { path: '', component: TodoHomeComponent },
-  // { path: '', redirectTo: 'all', pathMatch: 'full' },
+  // { path: '', component: TodoHomeComponent },
+  { path: '', redirectTo: 'all', pathMatch: 'full' },
   { path: ':filter', component: TodoComponent, canActivate: [AuthGuard], pathMatch: 'full' },
 ];
 
