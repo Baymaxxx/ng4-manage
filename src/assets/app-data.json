@@ -22,9 +22,14 @@
             "icon": "anticon-edit"
         },
         {
-            "text":"项目监控",
+            "text":"项目图表",
             "link": "/monitor",
-            "icon": "anticon-video-camera"
+            "icon": "anticon-area-chart"
+        },
+        {
+            "text":"项目表格",
+            "link": "/table",
+            "icon": "anticon-laptop"
         }
     ]
 }

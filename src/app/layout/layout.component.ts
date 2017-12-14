@@ -1,12 +1,12 @@
 import { SettingsService } from './../core/services/settings.service';
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Project } from '../shared/models/project.model';
 import { LocalStorageService } from 'angular-web-storage';
 
 @Component({
   selector: 'app-layout',
   templateUrl: './layout.component.html',
-  styleUrls: ['./layout.component.scss']
+  styleUrls: ['./layout.component.scss'],
 })
 export class LayoutComponent implements OnInit {
   isCollapsed: boolean;

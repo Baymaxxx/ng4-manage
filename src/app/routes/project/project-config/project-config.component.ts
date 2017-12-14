@@ -1,17 +1,26 @@
+import { boxAnimateHover } from './../../../shared/animates/base-click';
 import { LocalStorageService } from 'angular-web-storage';
 import { Project } from './../../../shared/models/project.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { AddProjectComponent } from '../add-project/add-project.component';
 import { Observable } from '../../../../../node_modules/_rxjs@5.5.2@rxjs';
 import { NzModalService } from '../../../../../node_modules/_ng-zorro-antd@0.6.0-rc.2@ng-zorro-antd';
+import { boxAnimate } from '../../../shared/animates/base-click';
+// import { simAnim } from '../../../shared/animates/sim-anim'; => all
+import { fadeIn, fadeOut, stretch, shrink, flyIn, flyOut, zoomIn, zoomOut } from '../../../shared/animates/sim-anim';
 
 @Component({
   selector: 'app-project-config',
   templateUrl: './project-config.component.html',
-  styleUrls: ['./project-config.component.scss']
+  styleUrls: ['./project-config.component.scss'],
+  animations: [boxAnimate, boxAnimateHover, fadeIn, fadeOut, shrink, stretch, flyIn, flyOut, zoomIn, zoomOut]
 })
 export class ProjectConfigComponent implements OnInit {
   project: Project;
+  // 定义开始的状态
+  boxState: String = 'right';
+  _isTrue: Boolean = true;
+  boxHoverState: String = 'out';
   constructor(
     private local: LocalStorageService,
     private confirmSrv: NzModalService,
@@ -19,6 +28,25 @@ export class ProjectConfigComponent implements OnInit {
 
   ngOnInit() {
   }
+  // 绑定一个鼠标移入改变状态
+  onMouseEnter(event) {
+    console.log(event);
+    this.boxHoverState = 'in';
+  }
+  // 绑定一个鼠标移出改变状态
+  onmouseleave() {
+    this.boxHoverState = 'out';
+  }
+  start(): void {
+    console.log('开始运动');
+    if (this._isTrue) {
+      this.boxState = 'left';
+    } else {
+      this.boxState = 'right';
+    }
+    this._isTrue = !this._isTrue;
+  }
+
   leave(): boolean | Observable<boolean> | Promise<boolean> {
     return new Observable((observer) => {
       this.confirmSrv.confirm({

@@ -4,7 +4,7 @@
         (click)="toggleCollapsedSideabar()">
         <i class="anticon anticon-menu-{{settings.layout.collapsed ? 'unfold' : 'fold'}}"></i>
     </div>
-  <div class="logo pull-left">
+  <div class="logo pull-left" @zoomIn>
     <a [routerLink]="['/']">
       <!-- <img src="http://placehold.it/200x100" alt="joycloud"> -->
       <img src="../../../assets/img/navLogo.png" alt="joycloud">
@@ -27,7 +27,7 @@
        TODO
     </li>
   </ul>
-  <div class="text-center exam-title">
+  <div class="text-center exam-title animated infinite bounce">
     {{project?.name}}
   </div>
   <div class="pull-right userinfo">

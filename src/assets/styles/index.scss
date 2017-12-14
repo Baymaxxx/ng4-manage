@@ -1,6 +1,13 @@
 @import './_preloader';
 @import './core/_core';
 @import './page/_page';
+@import './animate';
+
+router-outlet+*{
+    width: 100%; 
+    flex: 1;   
+    box-sizing: border-box;
+}
 .center-block{
     margin: 0 auto;
 }

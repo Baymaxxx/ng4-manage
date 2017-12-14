@@ -54,6 +54,14 @@ export const routes = [
       loadChildren: './project/project-monitor/project-monitor.module#ProjectMonitorModule',
     }]
   },
+  {
+    path: 'table',
+    component: LayoutComponent,
+    children: [{
+      path: '',
+      loadChildren: './project/project-table/project-table.module#ProjectTableModule',
+    }]
+  },
   // 单页不包裹layout
   {
     path: 'user',

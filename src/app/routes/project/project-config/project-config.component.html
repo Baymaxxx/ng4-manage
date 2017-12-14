@@ -1,3 +1,9 @@
 <p>
   项目配置页面
 </p>
+<div @flyIn @flyOut
+ class="box" (click)="start()" 
+(mouseenter)="onMouseEnter($event)"
+ (mouseout)="onmouseleave()" 
+ [@box]="boxState" 
+ [@boxHover]="boxHoverState"></div>

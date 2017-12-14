@@ -2,12 +2,14 @@ import { LocalStorageService } from 'angular-web-storage';
 import { SettingsService } from './../../core/services/settings.service';
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { Project } from '../../shared/models/project.model';
+import { zoomIn } from '../../shared/animates/sim-anim';
 
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
+  animations: [zoomIn]
 })
 export class HeaderComponent implements OnInit {
   username: string;
