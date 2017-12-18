@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LocalStorageService } from '../../../../node_modules/_angular-web-storage@1.0.0@angular-web-storage/core/service';
+import { LocalStorageService } from 'angular-web-storage';
 
 @Component({
   selector: 'app-noside-layout',

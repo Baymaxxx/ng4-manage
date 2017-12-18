@@ -1,7 +1,7 @@
 import { Project } from './../../../shared/models/project.model';
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { LocalStorageService } from '../../../../../node_modules/_angular-web-storage@1.0.0@angular-web-storage/core/service';
+import { LocalStorageService } from 'angular-web-storage';
 import { ProjectService } from '../project.service';
 
 @Component({

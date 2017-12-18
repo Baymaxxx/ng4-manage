@@ -28,7 +28,7 @@
     "core-js": "^2.4.1",
     "highcharts": "^6.0.3",
     "lodash": "^4.17.4",
-    "ng-zorro-antd": "^0.6.0-rc.2",
+    "ng-zorro-antd": "^0.6.7",
     "rxjs": "^5.4.2",
     "zone.js": "^0.8.14"
   },
